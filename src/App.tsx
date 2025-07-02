@@ -1,20 +1,15 @@
 
-import './App.css';
-import { Footer, Header } from './components';
+import { BrowserRouter } from "react-router-dom";
+import { PublicRoutes } from "./routes/PublicRoutes";
+import { PrivateRoutes } from "./routes/PrivateRoutes";
 
 
-function App() {
+export default function App() {
   return (
-    <div className="flex flex-col min-h-screen">
-      <Header />
-      <main className="flex-grow flex items-center justify-center bg-gray-100">
-        <h1 className="text-4xl font-bold text-primary">
-          LSofecia DEV BRANCH TO WORK
-        </h1>
-      </main>
-      <Footer />
-    </div>
+     <BrowserRouter>
+      <PublicRoutes />
+      <PrivateRoutes />
+    </BrowserRouter>
   );
 }
 
-export default App;
