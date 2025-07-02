@@ -3,6 +3,7 @@ import { Routes, useLocation, Route, Navigate } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import { publicRoutes } from "./PublicRoutes";
 import { privateRoutes } from "./PrivateRoutes";
+import { NotFound } from "../pages/errors/NotFound";
 
 export function AnimatedRoutes() {
   const location = useLocation();
@@ -13,7 +14,7 @@ export function AnimatedRoutes() {
         <Route path="/" element={<Navigate to="/study-schedule" replace />} />
         {publicRoutes()}
         {privateRoutes()}
-        <Route path="*" element={<h1>404 - Página não encontrada</h1>} />
+        <Route path="*" element={<NotFound />}  />
       </Routes>
     </AnimatePresence>
   );

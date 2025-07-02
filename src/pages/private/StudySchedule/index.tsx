@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import { studyWeeks } from "../../../data/studyWeeks";
 import { Skeleton, StudyWeekCard } from "../../../components";
-import { fadeSlideIn, fadeSlideUp } from "../../../animations/motionVariants";
+import { fadeSlideUp } from "../../../animations/motionVariants";
 
 export function StudySchedule() {
   const [loading, setLoading] = useState(true);
