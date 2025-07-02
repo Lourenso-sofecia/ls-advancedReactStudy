@@ -1,6 +1,7 @@
 import { useCallback, useState, MouseEvent } from "react";
 
-import { HiMenu, HiX } from "react-icons/hi";
+import { Menu, X } from 'lucide-react';
+
 
 type NavLink = {
   href: string;
@@ -56,7 +57,7 @@ export function Header() {
           aria-controls="mobile-menu"
           type="button"
         >
-          {isMenuOpen ? <HiX size={28} /> : <HiMenu size={28} />}
+          {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
 
