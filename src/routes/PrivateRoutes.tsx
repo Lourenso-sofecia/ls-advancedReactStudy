@@ -3,20 +3,20 @@ import { ProtectedRoute } from "../components/ProtectedRoute";
 import { PrivateLayout } from "../layouts/PrivateLayout";
 import { Profile } from "../pages/private/Profile";
 import { Dashboard } from "../pages/private/Dashboard";
+import { StudySchedule } from "../pages/private/StudySchedule";
+import { StudyWeekDetail } from "../pages/private/StudyWeekDetail";
 
-export function PrivateRoutes() {
-  return (
-    <Routes>
-      <Route 
-        element={
-            <ProtectedRoute>
-                <PrivateLayout />
-            </ProtectedRoute>
-        }
-     >
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/profile" element={<Profile />} />
-      </Route>
-    </Routes>
-  );
-}
+export const privateRoutes = () => [
+  <Route
+    element={
+      <ProtectedRoute>
+        <PrivateLayout />
+      </ProtectedRoute>
+    }
+  >
+    <Route path="/dashboard" element={<Dashboard />} />
+    <Route path="/profile" element={<Profile />} />
+    <Route path="/study-schedule" element={<StudySchedule />} />
+    <Route path="/study-schedule/:weekId" element={<StudyWeekDetail />} />
+  </Route>,
+];
