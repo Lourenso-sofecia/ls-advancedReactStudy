@@ -2,6 +2,9 @@ import { useCallback, useState, MouseEvent } from "react";
 
 import { Menu, X } from 'lucide-react';
 
+import { useAuthStore } from "../stores/authStore";
+import { useNavigate } from "react-router-dom";
+
 
 type NavLink = {
   href: string;
@@ -16,6 +19,9 @@ const navLinks: NavLink[] = [
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { user, logout } = useAuthStore();
+
+  const navigate = useNavigate();
 
   // Event handler recebe MouseEvent do botão, tipo genérico para HTMLButtonElement
   const handleToggleMenu = useCallback(
@@ -30,6 +36,18 @@ export function Header() {
   const handleCloseLinkWhenClick = useCallback((): void => {
     setIsMenuOpen(false);
   }, []);
+
+  const handleLoginRedirect = () => {
+    navigate("/login");
+    setIsMenuOpen(false);
+  };
+
+  const handleLoutRedirect = () => {
+    logout();
+    navigate("/login");
+    setIsMenuOpen(false);
+  };
+
 
   return (
     <header className="bg-primary text-white shadow-md">
@@ -47,6 +65,26 @@ export function Header() {
               {label}
             </a>
           ))}
+
+          {user ? (
+            <>
+              <span className="ml-4 text-sm italic">Olá, {user.name}</span>
+              <button
+                onClick={handleLoutRedirect}
+                className="ml-2 px-3 py-1 bg-white text-primary rounded hover:bg-gray-100 transition"
+              >
+                Sair
+              </button>
+            </>
+          ) : (
+            <button
+              onClick={handleLoginRedirect}
+              className="ml-2 px-4 py-1 bg-white text-primary rounded hover:bg-gray-100 transition"
+            >
+              Login
+            </button>
+          )}
+
         </nav>
 
         <button
@@ -79,6 +117,25 @@ export function Header() {
               {label}
             </a>
           ))}
+
+          {user ? (
+            <div className="mt-4 flex flex-col space-y-2">
+              <span className="text-sm">Olá, {user.name}</span>
+              <button
+                onClick={handleLoutRedirect}
+                className="px-3 py-2 bg-white text-primary rounded hover:bg-gray-100 transition"
+              >
+                Sair
+              </button>
+            </div>
+          ) : (
+            <button
+              onClick={handleLoginRedirect}
+              className="w-full px-3 py-2 bg-white text-primary rounded hover:bg-gray-100 transition"
+            >
+              Login
+            </button>
+          )}
         </nav>
       )}
     </header>

@@ -1,5 +1,3 @@
-
-// src/services/fakeAuthService.ts
 import { fakeUsers } from "../data/fakeUsers";
 
 export interface AuthResponse {
@@ -10,15 +8,18 @@ export interface AuthResponse {
 export function fakeLogin(email: string, password: string): Promise<AuthResponse> {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      const user = fakeUsers.find(
-        (u) => u.email === email && u.password === password
-      );
-      if (user) {
-        const token = btoa(`${user.id}:${user.email}`); // base64
-        resolve({ token, userId: user.id });
-      } else {
-        reject(new Error("Credenciais inválidas"));
+      const user = fakeUsers.find((u) => u.email === email);
+
+      if (!user) {
+        return reject(new Error("Email não cadastrado."));
       }
+
+      if (user.password !== password) {
+        return reject(new Error("Senha incorreta."));
+      }
+
+      const token = btoa(`${user.id}:${user.email}`); // base64
+      resolve({ token, userId: user.id });
     }, 800);
   });
 }

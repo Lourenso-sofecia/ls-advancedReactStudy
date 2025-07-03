@@ -1,23 +1,61 @@
-import { useNavigate } from "react-router-dom";
-import { login } from "../../../utils/auth";
+
+import { useEffect, useState } from "react";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import { useAuthStore } from "../../../stores/authStore";
 
 export function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { login, error, loading, user } = useAuthStore();
   const navigate = useNavigate();
+  const location = useLocation();
+  
+  const token = localStorage.getItem("token");
+  // Essa rota que tentou acessar antes do login (se tiver)
+  const from = (location.state as any)?.from?.pathname || "/dashboard";
 
-  const handleLogin = () => {
-    login();
+  // Se estiver logado, já renderiza o redirect (navegação síncrona)
+  if (token) {
+    return <Navigate to={from} replace />;
+  }
+  
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    const success = await login(email, password);
+    if (!success) return;
+    // Se o login for bem-sucedido, redireciona para o dashboard
     navigate("/dashboard");
-  };
+  }
 
   return (
-    <div className="text-center mt-20">
-      <h1 className="text-2xl font-bold mb-4">Login</h1>
-      <button
-        onClick={handleLogin}
-        className="bg-blue-600 text-white px-4 py-2 rounded"
-      >
-        Entrar
-      </button>
+    <div className="max-w-sm mx-auto mt-20 p-4 border rounded shadow">
+      <h1 className="text-xl font-bold mb-4">Login</h1>
+      <form onSubmit={handleSubmit} className="space-y-3">
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Email"
+          required
+          className="w-full p-2 border rounded"
+        />
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Senha"
+          required
+          className="w-full p-2 border rounded"
+        />
+        {error && <p className="text-red-500 text-sm">{error}</p>}
+        <button
+          type="submit"
+          disabled={loading}
+          className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
+        >
+          {loading ? "Entrando..." : "Entrar"}
+        </button>
+      </form>
     </div>
   );
 }

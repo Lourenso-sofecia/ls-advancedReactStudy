@@ -4,6 +4,7 @@ import { AnimatePresence } from "framer-motion";
 import { publicRoutes } from "./PublicRoutes";
 import { privateRoutes } from "./PrivateRoutes";
 import { NotFound } from "../pages/errors/NotFound";
+import { Unauthorized } from "../pages/errors/Unauthorized";
 
 export function AnimatedRoutes() {
   const location = useLocation();
@@ -15,6 +16,7 @@ export function AnimatedRoutes() {
         {publicRoutes()}
         {privateRoutes()}
         <Route path="*" element={<NotFound />}  />
+        <Route path="/unauthorized" element={<Unauthorized />} />
       </Routes>
     </AnimatePresence>
   );

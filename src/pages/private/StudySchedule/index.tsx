@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { studyWeeks } from "../../../data/studyWeeks";
 import { Skeleton, StudyWeekCard } from "../../../components";
@@ -21,6 +21,12 @@ export function StudySchedule() {
 
   return (
     <motion.section variants={fadeSlideUp} className="container mx-auto p-4">
+      <Link
+        to="/dashboard"
+        className="mb-4 inline-block text-primary hover:underline"
+      >
+        &larr; Voltar
+      </Link>
       <h1 className="text-2xl font-bold mb-6">Agenda Semanal de Estudos</h1>
       {loading ? (
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
