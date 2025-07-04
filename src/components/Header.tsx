@@ -1,10 +1,9 @@
 import { useCallback, useState, MouseEvent } from "react";
 
-import { Menu, X } from 'lucide-react';
+import { Menu, X } from "lucide-react";
 
 import { useAuthStore } from "../stores/authStore";
-import { useNavigate } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
 
 type NavLink = {
   href: string;
@@ -38,16 +37,10 @@ export function Header() {
   }, []);
 
   const handleLoginRedirect = () => {
-    navigate("/login");
-    setIsMenuOpen(false);
-  };
-
-  const handleLoutRedirect = () => {
     logout();
     navigate("/login");
     setIsMenuOpen(false);
   };
-
 
   return (
     <header className="bg-primary text-white shadow-md">
@@ -68,9 +61,11 @@ export function Header() {
 
           {user ? (
             <>
-              <span className="ml-4 text-sm italic">Olá, {user.name}</span>
+              <Link to="/profile" className="ml-4 text-sm italic">
+                Olá, {user.name}
+              </Link>
               <button
-                onClick={handleLoutRedirect}
+                onClick={handleLoginRedirect}
                 className="ml-2 px-3 py-1 bg-white text-primary rounded hover:bg-gray-100 transition"
               >
                 Sair
@@ -84,7 +79,6 @@ export function Header() {
               Login
             </button>
           )}
-
         </nav>
 
         <button
@@ -120,9 +114,11 @@ export function Header() {
 
           {user ? (
             <div className="mt-4 flex flex-col space-y-2">
-              <span className="text-sm">Olá, {user.name}</span>
+              <Link to="/profile" className="ml-4 text-sm italic">
+                Olá, {user.name}
+              </Link>
               <button
-                onClick={handleLoutRedirect}
+                onClick={handleLoginRedirect}
                 className="px-3 py-2 bg-white text-primary rounded hover:bg-gray-100 transition"
               >
                 Sair

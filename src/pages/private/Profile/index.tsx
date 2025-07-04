@@ -1,14 +1,29 @@
+import { motion } from "framer-motion";
+import { useAuthStore } from "../../../stores/authStore";
+import { fadeSlideUp } from "../../../animations/motionVariants";
+import { useNavigate } from "react-router-dom";
+
 export function Profile() {
+
+  const {user} = useAuthStore();
+  const navigate = useNavigate();
+  
   return (
-    <section className="container max-w-container mx-auto py-10">
+    <motion.section variants={fadeSlideUp} className="container mx-auto p-4">
+      <button
+        onClick={() => navigate(-1)}
+        className="mb-4 inline-block text-primary hover:underline"
+      >
+        &larr; Voltar
+      </button>
       <h2 className="text-3xl font-semibold text-primary mb-6">Meu Perfil</h2>
-      <div className="bg-white p-6 rounded-xl shadow max-w-md">
-        <div className="mb-4">
+      <div className="bg-white p-6 rounded-xl shadow max-w-md flex flex-col space-y-4">
+        <div className="">
           <label className="block text-sm font-medium text-gray-700">Nome</label>
           <input
             type="text"
             className="mt-1 block w-full px-3 py-2 border rounded-lg shadow-sm focus:ring-primary focus:border-primary"
-            defaultValue="Usuário Exemplo"
+            defaultValue={user?.name || ""}
           />
         </div>
         <div>
@@ -16,10 +31,17 @@ export function Profile() {
           <input
             type="email"
             className="mt-1 block w-full px-3 py-2 border rounded-lg shadow-sm focus:ring-primary focus:border-primary"
-            defaultValue="exemplo@ls.com"
+            defaultValue={user?.email || ""}
           />
         </div>
+        <div>
+          <label className="block text-sm font-medium text-gray-700">Groups</label>
+          
+          <select className="flex w-full mt-1 px-1.5 py-2 border rounded-lg shadow-sm focus:ring-primary focus:border-primary cursor-pointer">
+            <option value={user?.group}>{user?.group}</option>
+          </select>
+        </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

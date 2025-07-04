@@ -6,11 +6,10 @@ import { useAuthStore } from "../../../stores/authStore";
 export function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { login, error, loading, user } = useAuthStore();
+  const { login, error, loading, user, token } = useAuthStore();
   const navigate = useNavigate();
   const location = useLocation();
   
-  const token = localStorage.getItem("token");
   // Essa rota que tentou acessar antes do login (se tiver)
   const from = (location.state as any)?.from?.pathname || "/dashboard";
 
@@ -51,7 +50,7 @@ export function Login() {
         <button
           type="submit"
           disabled={loading}
-          className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
+          className={`w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 ${loading ? "opacity-50 cursor-not-allowed" : ""}`}
         >
           {loading ? "Entrando..." : "Entrar"}
         </button>
