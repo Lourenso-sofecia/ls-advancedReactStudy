@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Project } from "../data/studyWeeks";
 
 interface Props {
@@ -15,14 +16,12 @@ export function ProjectList({ projects }: Props) {
           <li key={id}>
             <strong>{title}</strong> — {description}{" "}
             {link && (
-              <a
-                href={link}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                to={link}
                 className="text-primary underline hover:text-secondary"
               >
                 Ver Projeto
-              </a>
+              </Link>
             )}
           </li>
         ))}

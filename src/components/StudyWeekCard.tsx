@@ -1,6 +1,7 @@
 import { memo } from "react";
 import { StudyWeek } from "../data/studyWeeks";
 import { motion } from "framer-motion";
+import { fadeSlideUp, zoomIn } from "../animations/motionVariants";
 
 interface Props {
   week: StudyWeek;
@@ -11,9 +12,7 @@ export const StudyWeekCard = memo(({ week, onClick }: Props) => {
   return (
     <motion.article
       layout
-      initial={{ opacity: 0, y: 15 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -15 }}
+      variants={fadeSlideUp}
       className="bg-white dark:bg-gray-800 shadow-md rounded-md p-4 cursor-pointer hover:shadow-xl transition-shadow"
       onClick={() => onClick(week.id)}
       role="button"

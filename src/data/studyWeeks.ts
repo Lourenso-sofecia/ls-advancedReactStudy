@@ -43,7 +43,7 @@ export const studyWeeks: StudyWeek[] = [
         id: "todo-list",
         title: "Projeto To-do List",
         description: "Pequeno projeto para praticar useState e listas.",
-        link: "https://github.com/seuusuario/todo-list",
+        link: "/study-schedule/week-1-fundamentos-react/todo-list",
       },
     ],
   },
