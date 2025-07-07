@@ -65,7 +65,7 @@ export const studyWeeks: StudyWeek[] = [
         title: "Simular API com Loading (useEffect + useState)",
         description:
           "Mini app com Simulação de API, loading useEffect e useState.",
-        link: "https://github.com/seuusuario/theme-redux-app",
+        link: "/study-schedule/week-2-hooks-avancados/counter",
       },
     ],
   },
