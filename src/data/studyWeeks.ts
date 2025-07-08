@@ -90,7 +90,7 @@ export const studyWeeks: StudyWeek[] = [
         title: "App com Tema e Login (Redux)",
         description:
           "Mini app com troca de tema e autenticação com Redux Toolkit.",
-        link: "https://github.com/seuusuario/theme-redux-app",
+        link: "/study-schedule/week-3-gerenciamento-estado/jobs",
       },
     ],
   },

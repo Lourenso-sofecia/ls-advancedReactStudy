@@ -13,6 +13,10 @@ export function Login() {
   // Essa rota que tentou acessar antes do login (se tiver)
   const from = (location.state as any)?.from?.pathname || "/dashboard";
 
+  useEffect(() => {
+    document.title = "Login - LS Advanced Study";
+  }, []);
+  
   // Se estiver logado, já renderiza o redirect (navegação síncrona)
   if (token) {
     return <Navigate to={from} replace />;
@@ -25,6 +29,8 @@ export function Login() {
     // Se o login for bem-sucedido, redireciona para o dashboard
     navigate("/dashboard");
   }
+
+  
 
   return (
     <div className="max-w-sm mx-auto mt-20 p-4 border rounded shadow">

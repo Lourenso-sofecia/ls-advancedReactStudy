@@ -24,6 +24,7 @@ module.exports = {
       },
     },
   },
+  darkMode: 'class', // permite o modo escuro baseado em classe
   plugins: [],
 }
 

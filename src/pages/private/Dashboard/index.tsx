@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { fadeSlideUp } from "../../../animations/motionVariants";
+import { useEffect } from "react";
 
 export function Dashboard() {
 
@@ -9,6 +10,9 @@ export function Dashboard() {
   function handleOpenWeek() {
     navigate("/study-schedule");
   }
+  useEffect(() => {
+      document.title = `Dashboad - LS Advanced Study`;
+    }, []);
 
   return (
     <motion.section variants={fadeSlideUp} className="container max-w-container mx-auto py-10">

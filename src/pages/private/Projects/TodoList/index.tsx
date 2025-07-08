@@ -19,7 +19,7 @@ export function TodoPage() {
   return (
     <motion.main
       variants={fadeSlideUp}
-      className="container mx-auto max-w-2xl px-4 py-8"
+      className="sm:container mx-auto  sm:px-4 py-8"
     >
       <Link
         to="/study-schedule/week-1-fundamentos-react"

@@ -11,8 +11,12 @@ export function StudySchedule() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 3200);
+    const timer = setTimeout(() => setLoading(false), 500);
     return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    document.title = `Agenda Semanal de Estudo - LS Advanced Study`;
   }, []);
 
   function handleOpenWeek(id: string) {

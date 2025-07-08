@@ -7,6 +7,7 @@ import { StudySchedule } from "../pages/private/StudySchedule";
 import { StudyWeekDetail } from "../pages/private/StudyWeekDetail";
 import { TodoPage } from "../pages/private/Projects/TodoList";
 import { CounterPage } from "../pages/private/Projects/Counter";
+import { JobsPage } from "../pages/private/Projects/Jobs";
 
 export const privateRoutes = () => [
   <Route
@@ -22,5 +23,6 @@ export const privateRoutes = () => [
     <Route path="/study-schedule/:weekId" element={<StudyWeekDetail />} />
     <Route path="/study-schedule/:weekId/todo-list" element={<TodoPage />} />
     <Route path="/study-schedule/:weekId/counter" element={<CounterPage />} />
+    <Route path="/study-schedule/:weekId/jobs" element={<JobsPage />} />
   </Route>
 ];

@@ -3,6 +3,8 @@ import { AnimatedRoutes } from "./routes/AnimatedRoutes";
 import { ErrorBoundary } from "./components/ErrorBoundary";
 import { useAuthStore } from "./stores/authStore";
 import { useEffect } from "react";
+import { Provider } from "react-redux";
+import { store } from "./stores/jobsStore";
 
 export default function App() {
   const { restoreSession } = useAuthStore();
@@ -13,7 +15,9 @@ export default function App() {
   return (
     <ErrorBoundary>
       <BrowserRouter>
+      <Provider store={store}>
         <AnimatedRoutes />
+      </Provider>
       </BrowserRouter>
     </ErrorBoundary>
   );
