@@ -15,9 +15,9 @@ export default function App() {
   return (
     <ErrorBoundary>
       <BrowserRouter>
-      <Provider store={store}>
-        <AnimatedRoutes />
-      </Provider>
+        <Provider store={store}>
+          <AnimatedRoutes />
+        </Provider>
       </BrowserRouter>
     </ErrorBoundary>
   );

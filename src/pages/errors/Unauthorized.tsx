@@ -19,7 +19,7 @@ export function Unauthorized() {
       <div className="bg-secondary rounded-full p-4 mb-6">
         <AlertTriangle className="text-primary" size={48} />
       </div>
-      <h1 className="text-5xl font-bold text-primary mb-4">403 - Acesso Negado</h1>
+      <h1 className="lg:text-5xl sm:text-3xl text-2xl font-bold text-primary mb-4">403 - Acesso Negado</h1>
       <p className="text-lg text-muted-foreground mb-6">
         Você não tem permissão para acessar esta página.
       </p>
