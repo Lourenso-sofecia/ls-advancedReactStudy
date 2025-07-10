@@ -112,6 +112,7 @@ export const studyWeeks: StudyWeek[] = [
         title: "App com Tabs Otimizadas",
         description:
           "Projeto focado em performance com lazy loading e memoização.",
+        link: "/study-schedule/week-4-performance-lazy-loading/tabs",
       },
     ],
   },
@@ -131,8 +132,7 @@ export const studyWeeks: StudyWeek[] = [
       {
         id: "tailwind-login-dashboard",
         title: "UI com Tailwind",
-        description:
-          "Tela de login e dashboard com Tailwind responsivo e dark mode.",
+        description: "Tela de login e dashboard com Tailwind responsivo e dark mode.",
       },
     ],
   },
