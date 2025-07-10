@@ -13,7 +13,7 @@ export const StudyWeekCard = memo(({ week, onClick }: Props) => {
     <motion.article
       layout
       variants={fadeSlideUp}
-      className="dark:bg-white bg-gray-100 dark:text-primary shadow-md rounded-md p-4 cursor-pointer hover:shadow-xl transition-shadow"
+      className="dark:bg-white bg-white dark:text-primary shadow rounded-md p-4 cursor-pointer hover:shadow-xl transition-shadow"
       onClick={() => onClick(week.id)}
       role="button"
       tabIndex={0}
