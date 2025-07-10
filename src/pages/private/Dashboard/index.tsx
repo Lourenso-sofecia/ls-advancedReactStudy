@@ -18,7 +18,7 @@ export function Dashboard() {
     }, []);
 
   return (
-    <motion.section variants={fadeSlideUp} className="container max-w-container mx-auto py-10">
+    <motion.section variants={fadeSlideUp} className="sm:container max-w-container mx-auto py-10">
       <h2 className="text-3xl font-semibold text-primary mb-6">Dashboard</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <button onClick={handleOpenProgress}  type="button" className="bg-white shadow p-6 rounded-xl flex flex-col items-start">

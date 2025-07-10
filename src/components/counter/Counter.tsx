@@ -13,14 +13,14 @@ export const Counter = memo(() => {
 
       <div className="text-center">
         <output
-          className="text-4xl font-bold"
+          className="text-4xl dark:text-primary font-bold"
           aria-live="polite"
           aria-atomic="true"
         >
           {count}
         </output>
         {previous !== null && (
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-gray-500 ">
             Valor anterior: {previous}
           </p>
         )}

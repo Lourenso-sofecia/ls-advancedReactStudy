@@ -13,7 +13,7 @@ export const StudyWeekCard = memo(({ week, onClick }: Props) => {
     <motion.article
       layout
       variants={fadeSlideUp}
-      className="bg-white dark:bg-gray-800 shadow-md rounded-md p-4 cursor-pointer hover:shadow-xl transition-shadow"
+      className="dark:bg-white bg-gray-100 dark:text-primary shadow-md rounded-md p-4 cursor-pointer hover:shadow-xl transition-shadow"
       onClick={() => onClick(week.id)}
       role="button"
       tabIndex={0}
@@ -23,7 +23,7 @@ export const StudyWeekCard = memo(({ week, onClick }: Props) => {
       aria-label={`Abrir detalhes da ${week.title}`}
     >
       <h2 className="text-lg font-semibold mb-2">{week.title}</h2>
-      <p className="text-sm text-gray-600 dark:text-gray-300">
+      <p className="text-sm text-gray-600 ">
         {week.tasks.length} tarefas planejadas
       </p>
     </motion.article>

@@ -24,14 +24,14 @@ export function StudySchedule() {
   }
 
   return (
-    <motion.section variants={fadeSlideUp} className="container mx-auto p-4">
+    <motion.section variants={fadeSlideUp} className="sm:container mx-auto sm:p-4 ">
       <Link
         to="/dashboard"
         className="mb-4 inline-block text-primary hover:underline"
       >
         &larr; Voltar
       </Link>
-      <h1 className="text-2xl font-bold mb-6">Agenda Semanal de Estudos</h1>
+      <h1 className="text-2xl font-bold mb-6 dark:text-primary">Agenda Semanal de Estudos</h1>
       {loading ? (
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {Array.from({ length: studyWeeks?.length }).map((_, i) => (

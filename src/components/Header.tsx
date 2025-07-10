@@ -4,6 +4,7 @@ import { Menu, X } from "lucide-react";
 
 import { useAuthStore } from "../stores/authStore";
 import { Link, useNavigate } from "react-router-dom";
+import { ThemeToggle } from "./ThemeToggle";
 
 type NavLink = {
   href: string;
@@ -47,50 +48,53 @@ export function Header() {
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <h1 className="text-xl font-bold">LSofecia</h1>
 
-        <nav className="hidden md:flex space-x-6">
-          {navLinks.map(({ href, label }) => (
-            <a
-              key={href}
-              href={href}
-              className="hover:underline transition-colors duration-200"
-              onClick={handleCloseLinkWhenClick}
-            >
-              {label}
-            </a>
-          ))}
+        <div className="flex items-center gap-4">
+          <nav className="hidden md:flex space-x-6">
+            {navLinks.map(({ href, label }) => (
+              <a
+                key={href}
+                href={href}
+                className="hover:underline transition-colors duration-200"
+                onClick={handleCloseLinkWhenClick}
+              >
+                {label}
+              </a>
+            ))}
 
-          {user ? (
-            <>
-              <Link to="/profile" className="ml-4 text-sm italic">
-                Olá, {user.name}
-              </Link>
+            {user ? (
+              <>
+                <Link to="/profile" className="ml-4 text-sm italic">
+                  Olá, {user.name}
+                </Link>
+                <button
+                  onClick={handleLoginRedirect}
+                  className="ml-2 px-3 py-1 bg-white text-primary rounded hover:bg-gray-100 transition"
+                >
+                  Sair
+                </button>
+              </>
+            ) : (
               <button
                 onClick={handleLoginRedirect}
-                className="ml-2 px-3 py-1 bg-white text-primary rounded hover:bg-gray-100 transition"
+                className="ml-2 px-4 py-1 bg-white text-primary rounded hover:bg-gray-100 transition"
               >
-                Sair
+                Login
               </button>
-            </>
-          ) : (
-            <button
-              onClick={handleLoginRedirect}
-              className="ml-2 px-4 py-1 bg-white text-primary rounded hover:bg-gray-100 transition"
-            >
-              Login
-            </button>
-          )}
-        </nav>
+            )}
+          </nav>
 
-        <button
-          onClick={handleToggleMenu}
-          className="md:hidden focus:outline-none"
-          aria-label={isMenuOpen ? "Fechar menu" : "Abrir menu"}
-          aria-expanded={isMenuOpen}
-          aria-controls="mobile-menu"
-          type="button"
-        >
-          {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
-        </button>
+          <button
+            onClick={handleToggleMenu}
+            className="md:hidden focus:outline-none"
+            aria-label={isMenuOpen ? "Fechar menu" : "Abrir menu"}
+            aria-expanded={isMenuOpen}
+            aria-controls="mobile-menu"
+            type="button"
+          >
+            {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
+          <ThemeToggle />
+        </div>
       </div>
 
       {isMenuOpen && (

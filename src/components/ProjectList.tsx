@@ -13,7 +13,7 @@ export function ProjectList({ projects }: Props) {
       <h3 className="text-xl font-semibold mb-4">Projetos Relacionados</h3>
       <ul className="space-y-3 list-disc list-inside">
         {projects.map(({ id, title, description, link }) => (
-          <li key={id}>
+          <li className="dark:text-white" key={id}>
             <strong>{title}</strong> — {description}{" "}
             {link && (
               <Link

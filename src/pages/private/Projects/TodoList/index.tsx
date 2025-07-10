@@ -19,7 +19,7 @@ export function TodoPage() {
   return (
     <motion.main
       variants={fadeSlideUp}
-      className="sm:container mx-auto  sm:px-4 py-8"
+      className="sm:container mx-auto  sm:p-4"
     >
       <Link
         to="/study-schedule/week-1-fundamentos-react"
@@ -27,7 +27,7 @@ export function TodoPage() {
       >
         &larr; Voltar
       </Link>
-      <h1 className="text-3xl font-bold text-center mb-6">To-do List</h1>
+      <h1 className="sm:text-3xl text-2xl dark:text-primary text-black font-bold text-center mb-6">To-do List</h1>
       <TodoForm />
       <TodoList items={todos} />
     </motion.main>

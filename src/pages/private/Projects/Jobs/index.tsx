@@ -17,7 +17,7 @@ export function JobsPage() {
   return (
     <motion.main
       variants={fadeSlideIn}
-      className="sm:container mx-auto  sm:px-4 py-8"
+      className="sm:container mx-auto  sm:p-4"
     >
       <Link
         to="/study-schedule/week-3-gerenciamento-estado"
@@ -26,10 +26,10 @@ export function JobsPage() {
         &larr; Voltar
       </Link>
       <header className="mb-6 text-center flex flex-col gap-4">
-        <h1 className="text-3xl font-bold">
+        <h1 className="sm:text-3xl text-2xl text-black dark:text-primary font-bold">
            DevJobs APP com REDUX
         </h1>
-        <p className="text-gray-600 text-sm">
+        <p className="text-gray-600 dark:text-white text-sm">
           Projeto focado em Gerenciamento de Estado Global REDUX, performance, Persistência e Acessibilidade
         </p>
       </header>

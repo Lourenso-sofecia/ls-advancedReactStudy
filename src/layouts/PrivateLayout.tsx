@@ -5,7 +5,7 @@ export function PrivateLayout() {
   return (
     <>
       <Header />
-      <main className="container max-w-screen-lg mx-auto px-4 py-6">
+      <main className="container max-w-screen-lg mx-auto  py-6 dark:bg-slate-900 bg-white">
         <Outlet />
       </main>
       <Footer />

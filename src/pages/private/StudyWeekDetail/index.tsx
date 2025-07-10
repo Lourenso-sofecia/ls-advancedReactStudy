@@ -21,7 +21,7 @@ export function StudyWeekDetail() {
 
   return (
     <motion.section
-      className="container mx-auto p-4"
+      className="sm:container mx-auto sm:p-4 dark:text-primary"
       initial={{ opacity: 0, x: 50 }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -50 }}
@@ -33,7 +33,7 @@ export function StudyWeekDetail() {
         &larr; Voltar
       </Link>
 
-      <h1 className="text-3xl font-bold mb-6">{week.title}</h1>
+      <h1 className="sm:text-3xl  text-2xl font-bold mb-6">{week.title}</h1>
 
       <TaskList tasks={week.tasks} />
 

@@ -6,7 +6,7 @@ interface Props {
 
 export function TaskList({ tasks }: Props) {
   return (
-    <table className="w-full border-collapse text-left">
+    <table className="w-full border-collapse text-left dark:text-white">
       <thead>
         <tr>
           <th className="border-b border-gray-300 px-3 py-2">Dia</th>
