@@ -133,6 +133,7 @@ export const studyWeeks: StudyWeek[] = [
         id: "tailwind-login-dashboard",
         title: "UI com Tailwind",
         description: "Tela de login e dashboard com Tailwind responsivo e dark mode.",
+        link: "/study-schedule/week-5-tailwind-css/cardTailwind",
       },
     ],
   },

@@ -9,6 +9,7 @@ import { TodoPage } from "../pages/private/Projects/TodoList";
 import { CounterPage } from "../pages/private/Projects/Counter";
 import { JobsPage } from "../pages/private/Projects/Jobs";
 import { TabsPage } from "../pages/private/Tabs";
+import { CardTailwindPage } from "../pages/private/CardTailwind";
 
 export const privateRoutes = () => [
   <Route
@@ -26,5 +27,6 @@ export const privateRoutes = () => [
     <Route path="/study-schedule/:weekId/counter" element={<CounterPage />} />
     <Route path="/study-schedule/:weekId/jobs" element={<JobsPage />} />
     <Route path="/study-schedule/:weekId/tabs" element={<TabsPage />} />
+    <Route path="/study-schedule/:weekId/cardTailwind" element={<CardTailwindPage />} />
   </Route>
 ];
