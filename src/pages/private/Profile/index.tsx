@@ -13,7 +13,7 @@ export function Profile() {
   }, [user?.name]);
 
   return (
-    <motion.section variants={fadeSlideUp} className="sm:container mx-auto p-4">
+    <motion.section variants={fadeSlideUp} className="sm:container mx-auto sm:p-4">
       <button
         onClick={() => navigate(-1)}
         className="mb-4 inline-block text-primary hover:underline"

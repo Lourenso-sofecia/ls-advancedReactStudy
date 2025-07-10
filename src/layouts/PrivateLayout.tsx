@@ -3,12 +3,12 @@ import { Footer, Header } from "../components";
 
 export function PrivateLayout() {
   return (
-    <>
+    <div className="flex flex-col min-h-screen bg-white dark:bg-slate-900">
       <Header />
-      <main className="container max-w-screen-lg mx-auto  py-6 dark:bg-slate-900 bg-white">
+      <main className="flex-grow container max-w-screen-lg mx-auto py-6">
         <Outlet />
       </main>
       <Footer />
-    </>
+    </div>
   );
 }
