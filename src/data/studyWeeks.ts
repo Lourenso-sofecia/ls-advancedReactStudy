@@ -154,6 +154,7 @@ export const studyWeeks: StudyWeek[] = [
         id: "form-cadastro-validado",
         title: "Formulário com Validação",
         description: "Cadastro com validação via react-hook-form + Zod.",
+        link: "/study-schedule/week-6-react-hook-form/formStepper",
       },
     ],
   },
