@@ -1,4 +1,3 @@
-
 import { create } from "zustand";
 import { fakeGetProfile, fakeLogin } from "../services/fakeAuthService";
 import { FakeUser } from "../data/fakeUsers";
@@ -8,7 +7,8 @@ interface AuthState {
   token: string | null;
   loading: boolean;
   error: string | null;
-  login: (email: string, password: string) => Promise<boolean>; // retorna sucesso
+  isHydrated: boolean;
+  login: (email: string, password: string) => Promise<boolean>;
   logout: () => void;
   restoreSession: () => Promise<void>;
 }
@@ -18,14 +18,15 @@ export const useAuthStore = create<AuthState>((set) => ({
   token: localStorage.getItem("token"),
   loading: false,
   error: null,
+  isHydrated: false,
 
-  login: async (email: string, password: string) => {
+  login: async (email, password) => {
     set({ loading: true, error: null });
     try {
       const { token, userId } = await fakeLogin(email, password);
       localStorage.setItem("token", token);
       const user = (await fakeGetProfile(token)) as FakeUser;
-      set({ user, token, loading: false });
+      set({ user, token, loading: false, isHydrated: true });
       return true;
     } catch (err: any) {
       set({ error: err.message, loading: false });
@@ -40,13 +41,16 @@ export const useAuthStore = create<AuthState>((set) => ({
 
   restoreSession: async () => {
     const token = localStorage.getItem("token");
-    if (!token) return;
+    if (!token) {
+      set({ isHydrated: true });
+      return;
+    }
     try {
       const user = (await fakeGetProfile(token)) as FakeUser;
-      set({ user, token });
+      set({ user, token, isHydrated: true });
     } catch {
       localStorage.removeItem("token");
-      set({ user: null, token: null });
+      set({ user: null, token: null, isHydrated: true });
     }
   },
 }));

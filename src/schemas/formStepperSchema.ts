@@ -19,7 +19,7 @@ export const preferencesSchema = z.object({
   notifications: z.boolean().optional(),
   color: z.string().nonempty(requiredString),
   framework: z.string().nonempty(requiredString),
-  features: z.array(z.string()),
+  features: z.array(z.string().nonempty(requiredString)),
 });
 
 export const fullSchema = personalSchema

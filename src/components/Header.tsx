@@ -5,6 +5,7 @@ import { Menu, X } from "lucide-react";
 import { useAuthStore } from "../stores/authStore";
 import { Link, useNavigate } from "react-router-dom";
 import { ThemeToggle } from "./ThemeToggle";
+import { Skeleton } from ".";
 
 type NavLink = {
   href: string;
@@ -19,7 +20,7 @@ const navLinks: NavLink[] = [
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { user, logout } = useAuthStore();
+  const { user, logout, isHydrated } = useAuthStore();
 
   const navigate = useNavigate();
 
@@ -60,26 +61,31 @@ export function Header() {
                 {label}
               </a>
             ))}
-
-            {user ? (
+            {isHydrated ? (
               <>
-                <Link to="/profile" className="ml-4 text-sm italic">
-                  Olá, {user.name}
-                </Link>
-                <button
-                  onClick={handleLoginRedirect}
-                  className="ml-2 px-3 py-1 bg-white text-primary rounded hover:bg-gray-100 transition"
-                >
-                  Sair
-                </button>
+                {user ? (
+                  <>
+                    <Link to="/profile" className="ml-4  text-sm italic">
+                      Olá, {user.name}
+                    </Link>
+                    <button
+                      onClick={handleLoginRedirect}
+                      className="ml-2 px-3 py-1 bg-white text-primary rounded hover:bg-gray-100 transition"
+                    >
+                      Sair
+                    </button>
+                  </>
+                ) : (
+                  <button
+                    onClick={handleLoginRedirect}
+                    className="ml-2 px-4 py-1 bg-white text-primary rounded hover:bg-gray-100 transition"
+                  >
+                    Login
+                  </button>
+                )}
               </>
             ) : (
-              <button
-                onClick={handleLoginRedirect}
-                className="ml-2 px-4 py-1 bg-white text-primary rounded hover:bg-gray-100 transition"
-              >
-                Login
-              </button>
+              <Skeleton className="h-6 w-40" />
             )}
           </nav>
 
@@ -116,25 +122,31 @@ export function Header() {
             </a>
           ))}
 
-          {user ? (
-            <div className="mt-4 flex flex-col space-y-2">
-              <Link to="/profile" className="ml-4 text-sm italic">
-                Olá, {user.name}
-              </Link>
-              <button
-                onClick={handleLoginRedirect}
-                className="px-3 py-2 bg-white text-primary rounded hover:bg-gray-100 transition"
-              >
-                Sair
-              </button>
-            </div>
+          {isHydrated ? (
+            <>
+              {user ? (
+                <div className="mt-4 flex flex-col space-y-2">
+                  <Link to="/profile" className="ml-4 text-sm italic">
+                    Olá, {user.name}
+                  </Link>
+                  <button
+                    onClick={handleLoginRedirect}
+                    className="px-3 py-2 bg-white text-primary rounded hover:bg-gray-100 transition"
+                  >
+                    Sair
+                  </button>
+                </div>
+              ) : (
+                <button
+                  onClick={handleLoginRedirect}
+                  className="w-full px-3 py-2 bg-white text-primary rounded hover:bg-gray-100 transition"
+                >
+                  Login
+                </button>
+              )}
+            </>
           ) : (
-            <button
-              onClick={handleLoginRedirect}
-              className="w-full px-3 py-2 bg-white text-primary rounded hover:bg-gray-100 transition"
-            >
-              Login
-            </button>
+            <Skeleton className="h-6 w-full" />
           )}
         </nav>
       )}
