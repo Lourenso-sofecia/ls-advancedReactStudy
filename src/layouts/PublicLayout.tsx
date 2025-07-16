@@ -3,12 +3,12 @@ import { Footer, Header } from "../components";
 
 export function PublicLayout() {
   return (
-    <>
+    <div className="flex flex-col min-h-screen bg-white dark:bg-slate-900">
       <Header />
-      <main className="container max-w-screen-lg mx-auto px-4 py-6">
+      <main className="flex-grow container max-w-screen-lg mx-auto py-6">
         <Outlet />
       </main>
       <Footer />
-    </>
+    </div>
   );
 }

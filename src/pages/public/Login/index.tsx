@@ -33,9 +33,9 @@ export function Login() {
   
 
   return (
-    <div className="max-w-sm mx-auto mt-20 p-4 border rounded shadow">
-      <h1 className="text-xl font-bold mb-4">Login</h1>
-      <form onSubmit={handleSubmit} className="space-y-3">
+    <div className="max-w-sm mx-auto mt-20 sm:p-4 sm:border sm:rounded sm:shadow ">
+      <h1 className="text-xl font-bold mb-4 dark:text-primary">Login</h1>
+      <form onSubmit={handleSubmit} className="sm:space-y-3 space-y-4">
         <input
           type="email"
           value={email}
